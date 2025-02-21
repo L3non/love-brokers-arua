@@ -228,8 +228,7 @@ body.menu_open {overflow: hidden;}
 
     .show_menu {transform: translateX(0);}
     .nav_link {font-size: var(--fs-par);}
-
-    .nav_close {color: var(--dark);}
+    .nav_close {color: var(--grey-d);}
 }
 
 /* For large devices */
