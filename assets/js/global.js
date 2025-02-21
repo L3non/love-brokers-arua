@@ -42,15 +42,11 @@ window.addEventListener('scroll', () => {
     // Hide the header when scrolling down, show when scrolling up
     header.style.transform = currentScrollY > lastScrollY ? 'translateY(-100%)' : 'translateY(0)';
     
-    if (currentScrollY === 0) {
-        header.style.backgroundColor = 'transparent';
-        navActions.forEach(action => action.style.color = 'var(--light)');
-        header.classList.remove('scrolled');
-    } else {
-        header.style.backgroundColor = 'var(--light)';
-        navActions.forEach(action => action.style.color = 'var(--dark)');
-        header.classList.add('scrolled');
-    }
+    const isAtTop = currentScrollY === 0;
+
+    header.style.backgroundColor = isAtTop ? 'transparent' : 'var(--light)';
+    header.classList.toggle('scrolled', !isAtTop);
+    navActions.forEach(action => action.style.color = isAtTop ? 'var(--light)' : 'var(--dark)');
 
     lastScrollY = currentScrollY;
 });
