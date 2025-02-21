@@ -56,6 +56,7 @@
     /* Z index */
     --z-tooltip: 10;
     --z-fixed: 100;
+    --z-modal: 999;
 
     /* Transition time */
     --tr-fast: .3s;
@@ -201,10 +202,78 @@ body.menu_open {overflow: hidden;}
 /* Keep header fixed when menu is open */
 .show_menu ~ header {position: fixed;}
 
+/* Modal */
+.modal_container {
+    position: fixed; /* Stays fixed on the screen */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5); /* Dark transparent overlay */
+    display: flex;
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    z-index: 1000; /* Ensure it's above other elements */
+    padding: 0; /* Remove any padding that might cause extra space */
+}
+
+/* Modal content (Box in the center) */
+.modal_content {
+    background-color: var(--grey-l);
+    padding: 30px;
+    border-radius: 12px;
+    width: 400px; /* Adjust width as needed */
+    max-width: 90%; /* Responsive */
+    text-align: center;
+    position: relative;
+    transform: scale(0.8); /* Start smaller */
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Ensure button has no extra space */
+.modal_btn {
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+/* Show modal */
+.show_modal {
+    visibility: visible;
+    opacity: 1;
+}
+
+.show_modal .modal_content {
+    transform: scale(1); /* Animate in */
+}
+
+/* Remove unwanted default styles */
+button, div {
+    outline: none;
+    border: none;
+    background: none;
+}
+
+/* Prevent scrolling when modal is open */
+body.modal_open {
+    overflow: hidden;
+    height: 100vh;
+}
+
 /* == == == Media queries == == == */
 /* For medium devices */
 @media screen and (min-width: 576px) {
+    .modal__content{
+        margin: auto;
+        width: 380px;
+        border-radius: 16px;
+    }
     
+    .modal__img{width: 170px;}
 }
 
 @media screen and (min-width: 768px) {

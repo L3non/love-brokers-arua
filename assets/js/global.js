@@ -50,3 +50,31 @@ window.addEventListener('scroll', () => {
 
     lastScrollY = currentScrollY;
 });
+
+// Modal
+const openModalBtn = document.getElementById('open_modal');
+const modalContainer = document.getElementById('modal_container');
+const closeModalBtns = document.querySelectorAll('.close_modal');
+
+function showModal() {
+    modalContainer.classList.add('show_modal');
+    document.body.classList.add('modal_open'); // Prevent scrolling
+}
+
+function closeModal() {
+    modalContainer.classList.remove('show_modal');
+    document.body.classList.remove('modal_open'); // Enable scrolling again
+}
+
+// Open modal
+openModalBtn.addEventListener('click', showModal);
+
+// Close modal on button click
+closeModalBtns.forEach(btn => btn.addEventListener('click', closeModal));
+
+// Close modal when clicking outside it
+modalContainer.addEventListener('click', (event) => {
+    if (event.target === modalContainer) {
+        closeModal();
+    }
+});

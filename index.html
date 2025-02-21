@@ -56,7 +56,19 @@
 
         <div id="nav_actions">
             <!-- Language and currency changer button -->
-            <i class="fa-solid fa-globe action"></i>
+            <button id="open_modal" class="modal_btn">
+                <i class="fa-solid fa-globe action"></i>
+            </button>
+
+            <div id="modal_container" class="modal_container">
+                <div class="modal_content">
+                    <div class="modal_close close_modal" title="Fechar">
+                        <i class="fa-solid fa-x"></i>
+                    </div>
+
+                    <button class="modal_btn_link close_modal">Salvar</button>
+                </div>
+            </div>
 
             <!-- Toggle button -->
             <div id="nav_toggle" class="nav_toggle">
