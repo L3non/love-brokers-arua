@@ -32,19 +32,19 @@
         <div id="nav_menu" class="nav_menu">
             <ul id="nav_list">
                 <li class="nav_item">
-                    <a href="#" class="nav_link">Início</a>
+                    <a href="#" class="nav_link" data-i18n="inicio">Início</a>
                 </li>
 
                 <li class="nav_item">
-                    <a href="#" class="nav_link">Propriedades</a>
+                    <a href="#" class="nav_link" data-i18n="propriedade">Propriedades</a>
                 </li>
 
                 <li class="nav_item">
-                    <a href="#" class="nav_link">Sobre</a>
+                    <a href="#" class="nav_link" data-i18n="sobre">Sobre</a>
                 </li>
 
                 <li class="nav_item">
-                    <a href="#" class="nav_link">Contato</a>
+                    <a href="#" class="nav_link" data-i18n="contato">Contato</a>
                 </li>
             </ul>
 
@@ -66,7 +66,27 @@
                         <i class="fa-solid fa-x"></i>
                     </div>
 
-                    <button class="modal_btn_link close_modal">Salvar</button>
+                    <!-- Language Switcher -->
+                    <div class="language-switcher">
+                        <h3 data-i18n="language_title">Idioma</h3>
+                        <button id="current-language">
+                            <img id="language-flag" src="assets/images/flags/brazil.png" alt="Bandeira"> 
+                            <span id="language-label">Português</span>
+                        </button>
+                        <ul id="language-options" class="language-options"></ul>
+                    </div>
+
+
+                    <!-- Currency Switcher -->
+                    <div class="currency-switcher">
+                        <h3>Moeda</h3>
+                        <button id="current-currency">
+                            <span id="currency-label">USD</span> <span id="currency-symbol">$</span>
+                        </button>
+                        <ul id="currency-options" class="currency-options"></ul>
+                    </div>
+
+                    <button id="save-button" class="modal_btn_link close_modal" data-i18n="save_button">Salvar</button>
                 </div>
             </div>
 
@@ -83,6 +103,9 @@
 
 <main style="height: 3000px;">
     <img src="assets/images/wallpaper.jpeg" alt="" style="object-fit: cover; width: 100%;" >
+
+    <p>Preço: <span class="price" data-price="100">R$ 100,00</span></p>
+    
 </main>
 
 <!-- == == == Scripts == == == -->
@@ -93,6 +116,7 @@
     <script src="assets/javascript/scrollreveal.min.js"></script>
 
     <!-- Global -->
+    <script src="assets/js/translations/translation_global.js"></script>
     <script src="assets/js/global.js"></script>
 </main>
 </body>

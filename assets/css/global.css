@@ -1,7 +1,8 @@
 :root {
     /* Shadows */
+    --sh-dark:    #12121299;
     --sh-default: #0000004d;
-    --sh-light: #0000001f;
+    --sh-light:   #0000001f;
     --sh-lighter: #12121217;
 
     /* Colors */
@@ -193,52 +194,47 @@ nav {
     right: 21px;
 }
 
-/* Show menu */
 .show_menu {top: 0;}
-
-/* Prevent scrolling when menu is open */
 body.menu_open {overflow: hidden;}
-
-/* Keep header fixed when menu is open */
 .show_menu ~ header {position: fixed;}
 
 /* Modal */
 .modal_container {
-    position: fixed; /* Stays fixed on the screen */
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.5); /* Dark transparent overlay */
-    display: flex;
-    align-items: center; /* Center vertically */
-    justify-content: center; /* Center horizontally */
     visibility: hidden;
     opacity: 0;
-    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
-    z-index: 1000; /* Ensure it's above other elements */
-    padding: 0; /* Remove any padding that might cause extra space */
+    background-color: var(--sh-dark);
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity var(--tr-fast) ease-in-out, visibility var(--tr-fast) ease-in-out;
+    z-index: 1000;
 }
 
-/* Modal content (Box in the center) */
 .modal_content {
-    background-color: var(--grey-l);
+    border-radius: 9px;
+    background-color: var(--light);
     padding: 30px;
-    border-radius: 12px;
-    width: 400px; /* Adjust width as needed */
-    max-width: 90%; /* Responsive */
-    text-align: center;
+    max-width: 90%;
+    width: 450px;
     position: relative;
-    transform: scale(0.8); /* Start smaller */
-    transition: transform 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    text-align: center;
+    transform: scale(0.8);
+    transition: transform var(--tr-fast) ease-in-out;
 }
 
-/* Ensure button has no extra space */
 .modal_btn {
-    background: none;
-    border: none;
-    font-size: 18px;
     cursor: pointer;
+    border: none;
+    background: none;
+    font-size: var(--fs-h4);
 }
 
 /* Show modal */
@@ -247,22 +243,128 @@ body.menu_open {overflow: hidden;}
     opacity: 1;
 }
 
-.show_modal .modal_content {
-    transform: scale(1); /* Animate in */
-}
-
-/* Remove unwanted default styles */
-button, div {
-    outline: none;
-    border: none;
-    background: none;
-}
+.show_modal .modal_content {transform: scale(1);}
 
 /* Prevent scrolling when modal is open */
 body.modal_open {
     overflow: hidden;
     height: 100vh;
 }
+
+.currency-switcher {
+    display: inline-block;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.currency-switcher button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #ffffff;
+    border: 1px solid #ccc;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    color: #333;
+}
+
+.currency-options {
+    position: absolute;
+    background: #ffffff;
+    list-style: none;
+    width: 140px;
+    border-radius: 5px;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+    padding: 5px 0;
+    margin-top: 5px;
+    display: none;
+    text-align: left;
+}
+
+.currency-options.show {
+    display: block;
+}
+
+.currency-options li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    color: #333;
+}
+
+.currency-options li:hover {
+    background: #f1f1f1;
+}
+
+.language-switcher {
+    position: relative;
+    display: inline-block;
+}
+
+.language-switcher button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #ffffff;
+    border: 1px solid #ccc;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    color: #333;
+}
+
+.language-options {
+    position: absolute;
+    background: #ffffff;
+    list-style: none;
+    width: 160px;
+    border-radius: 5px;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+    padding: 5px 0;
+    margin-top: 5px;
+    display: none;
+    text-align: left;
+    z-index: 10;
+}
+
+.language-options.show {
+    display: block;
+}
+
+.language-options li {
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    color: #333;
+}
+
+.language-options li img {
+    width: 20px;
+    height: 15px;
+    margin-right: 8px;
+}
+
+.language-options li:hover {
+    background: #f1f1f1;
+}
+
+
+
+
+
+
+
+
+
+
 
 /* == == == Media queries == == == */
 /* For medium devices */
