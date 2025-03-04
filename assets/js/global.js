@@ -146,8 +146,12 @@ const applyConversion = () => {
 };
 
 // Action to open/close the dropdown
-switcherUI.button.addEventListener("click", () => {
-    switcherUI.list.classList.toggle("show");
+switcherUI.button.addEventListener("click", (event) => {
+    event.stopPropagation(); // Prevent click from propagating to document
+    const isOpen = switcherUI.list.classList.toggle("show");
+    const icon = switcherUI.button.querySelector("i");
+    icon.style.transition = "transform var(--tr-fast)";
+    switcherUI.button.querySelector("i").style.transform = isOpen ? "rotate(180deg)" : "rotate(0deg)";
 });
 
 // The "Save" button applies the conversion and closes the modal.
@@ -187,7 +191,7 @@ const languageUI = {
     list: document.getElementById("language-options"),
     label: document.getElementById("language-label"),
     flag: document.getElementById("language-flag"),
-    saveButton: document.getElementById("save-button")
+    saveButton: document.getElementById("save_button")
 };
 
 // Load translations directly from the JS file
@@ -247,8 +251,12 @@ const updateTexts = (lang) => {
 };
 
 // Action to open/close the dropdown
-languageUI.button.addEventListener("click", () => {
-    languageUI.list.classList.toggle("show");
+languageUI.button.addEventListener("click", (event) => {
+    event.stopPropagation();
+    const isOpen = languageUI.list.classList.toggle("show");
+    const icon = languageUI.button.querySelector("i");
+    icon.style.transition = "transform 0.3s";
+    icon.style.transform = isOpen ? "rotate(180deg)" : "rotate(0deg)";
 });
 
 // Initialize the language saved in LocalStorage
@@ -271,14 +279,83 @@ document.addEventListener("DOMContentLoaded", loadLanguages);
 // The "Save" button applies the conversion and dates the modal
 languageUI.saveButton.addEventListener("click", applyLanguageChange);
 
+// Area switcher
+const areaSwitcher = {
+    current: "m²",
+    pendingArea: "m²",
+    areaData: {
+        "m²": { name: "m²", factor: 1 },
+        "ft²": { name: "ft²", factor: 10.764 }
+    }
+};
+
+const areaUI = {
+    button: document.getElementById("current-area"),
+    list: document.getElementById("area-options"),
+    label: document.getElementById("area-label"),
+    saveButton: document.getElementById("save_button"),
+    areaElement: document.querySelector(".area")
+};
+
+// Populate the area dropdown
+Object.keys(areaSwitcher.areaData).forEach((unit) => {
+    const li = document.createElement("li");
+    li.textContent = unit;
+    li.addEventListener("click", () => selectPendingArea(unit));
+    areaUI.list.appendChild(li);
+});
+
+const selectPendingArea = (newUnit) => {
+    areaSwitcher.pendingArea = newUnit;
+    areaUI.label.textContent = newUnit;
+    areaUI.list.classList.remove("show");
+};
+
+const applyAreaConversion = () => {
+    areaSwitcher.current = areaSwitcher.pendingArea;
+    localStorage.setItem("selectedArea", areaSwitcher.current);
+    
+    const baseArea = parseFloat(areaUI.areaElement.dataset.area);
+    const factor = areaSwitcher.areaData[areaSwitcher.current].factor;
+    const convertedArea = (baseArea * factor).toFixed(2);
+    
+    areaUI.areaElement.textContent = `${convertedArea} ${areaSwitcher.current}`;
+};
+
+// Action to open/close the dropdown
+areaUI.button.addEventListener("click", (event) => {
+    event.stopPropagation();
+    const isOpen = areaUI.list.classList.toggle("show");
+    const icon = areaUI.button.querySelector("i");
+    icon.style.transition = "transform var(--tr-fast)";
+    icon.style.transform = isOpen ? "rotate(180deg)" : "rotate(0deg)";
+});
+
+// Save button applies conversion
+areaUI.saveButton.addEventListener("click", applyAreaConversion);
+
+document.addEventListener("DOMContentLoaded", () => {
+    const savedArea = localStorage.getItem("selectedArea") || "m²";
+    areaSwitcher.current = savedArea;
+    areaSwitcher.pendingArea = savedArea;
+    areaUI.label.textContent = savedArea;
+    applyAreaConversion();
+});
+
+// Closes the switcher list if clicked outside of it
 document.addEventListener("click", (event) => {
-    // Closes the coin list if clicked outside of it
     if (!switcherUI.list.contains(event.target) && !switcherUI.button.contains(event.target)) {
         switcherUI.list.classList.remove("show");
+        switcherUI.button.querySelector("i").style.transform = "rotate(0deg)";
     }
 
-    // Closes the language list if clicked outside of it
     if (!languageUI.list.contains(event.target) && !languageUI.button.contains(event.target)) {
         languageUI.list.classList.remove("show");
+        languageUI.button.querySelector("i").style.transform = "rotate(0deg)";
+    }
+
+    if (!areaUI.list.contains(event.target) && !areaUI.button.contains(event.target)) {
+        areaUI.list.classList.remove("show");
+        areaUI.button.querySelector("i").style.transform = "rotate(0deg)";
     }
 });

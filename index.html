@@ -62,31 +62,56 @@
 
             <div id="modal_container" class="modal_container">
                 <div class="modal_content">
-                    <div class="modal_close close_modal" title="Fechar">
+                    <div class="modal_close close_modal">
                         <i class="fa-solid fa-x"></i>
                     </div>
 
-                    <!-- Language Switcher -->
-                    <div class="language-switcher">
-                        <h3 data-i18n="language_title">Idioma</h3>
+                    <!-- Language switcher -->
+                    <div class="language_switcher switcher">
+                        <h3 class="switcher_title" data-i18n="language_title">Idioma</h3>
                         <button id="current-language">
-                            <img id="language-flag" src="assets/images/flags/brazil.png" alt="Bandeira"> 
-                            <span id="language-label">Português</span>
+                            <div>
+                                <img id="language-flag" src="assets/images/flags/brazil.png" alt="Bandeira">
+                                <span id="language-label">Português</span>
+                            </div>
+
+                            <i class="fa-solid fa-chevron-down"></i>
                         </button>
-                        <ul id="language-options" class="language-options"></ul>
+
+                        <ul id="language-options" class="language-options options_list"></ul>
                     </div>
 
 
-                    <!-- Currency Switcher -->
-                    <div class="currency-switcher">
-                        <h3>Moeda</h3>
+                    <!-- Currency switcher -->
+                    <div class="currency_switcher switcher">
+                        <h3 class="switcher_title" data-i18n="currency_title">Moeda</h3>
                         <button id="current-currency">
-                            <span id="currency-label">USD</span> <span id="currency-symbol">$</span>
+                            <div>
+                                <span id="currency-label">USD</span>
+                                <span id="currency-symbol">$</span>
+                            </div>
+
+                            <i class="fa-solid fa-chevron-down"></i>
                         </button>
-                        <ul id="currency-options" class="currency-options"></ul>
+
+                        <ul id="currency-options" class="currency-options options_list"></ul>
                     </div>
 
-                    <button id="save-button" class="modal_btn_link close_modal" data-i18n="save_button">Salvar</button>
+                    <!-- Area converter switcher -->
+                    <div class="area_switcher switcher">
+                        <h3 class="switcher_title">Unidade</h3>
+                        <button id="current-area">
+                            <div>
+                                <span id="area-label">m²</span>
+                            </div>
+
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+
+                        <ul id="area-options" class="area-options options_list"></ul>
+                    </div>
+
+                    <button id="save_button" class="modal_btn_link close_modal" data-i18n="save_button">Salvar</button>
                 </div>
             </div>
 
@@ -105,6 +130,7 @@
     <img src="assets/images/wallpaper.jpeg" alt="" style="object-fit: cover; width: 100%;" >
 
     <p>Preço: <span class="price" data-price="100">R$ 100,00</span></p>
+    <p>Area: <span class="area" data-area="50">50 m²</span></p>
     
 </main>
 
