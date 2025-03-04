@@ -156,14 +156,23 @@ switcherUI.saveButton.addEventListener("click", () => {
     closeModal();
 });
 
-// Initializes the currency saved in localStorage
 document.addEventListener("DOMContentLoaded", async () => {
-    await fetchExchangeRates(); // API Fee Search
     const savedCurrency = localStorage.getItem("selectedCurrency") || "BRL";
+
+    // Immediately display saved currency
     currencySwitcher.current = savedCurrency;
-    currencySwitcher.pendingCurrency = savedCurrency; // To keep the current selection in the dropdown
+    currencySwitcher.pendingCurrency = savedCurrency;
     switcherUI.label.textContent = savedCurrency;
     switcherUI.symbol.textContent = currencySwitcher.currencyData[savedCurrency].symbol;
+
+    // Try using the saved price before the API even responds
+    const basePrice = parseFloat(switcherUI.priceElement.dataset.price);
+    const symbol = currencySwitcher.currencyData[savedCurrency].symbol;
+    switcherUI.priceElement.textContent = `${symbol} ${basePrice.toFixed(2)}`;
+
+    // Search rates and update the price when ready
+    await fetchExchangeRates();
+    applyConversion();
 });
 
 // Language switcher
@@ -192,7 +201,6 @@ const loadLanguages = () => {
     populateLanguageDropdown();
     initializeLanguage();
 };
-
 
 // Populate the dropdown dynamically
 const populateLanguageDropdown = () => {
