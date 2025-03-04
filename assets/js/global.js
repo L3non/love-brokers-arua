@@ -270,3 +270,15 @@ document.addEventListener("DOMContentLoaded", loadLanguages);
 
 // The "Save" button applies the conversion and dates the modal
 languageUI.saveButton.addEventListener("click", applyLanguageChange);
+
+document.addEventListener("click", (event) => {
+    // Closes the coin list if clicked outside of it
+    if (!switcherUI.list.contains(event.target) && !switcherUI.button.contains(event.target)) {
+        switcherUI.list.classList.remove("show");
+    }
+
+    // Closes the language list if clicked outside of it
+    if (!languageUI.list.contains(event.target) && !languageUI.button.contains(event.target)) {
+        languageUI.list.classList.remove("show");
+    }
+});
