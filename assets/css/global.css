@@ -240,7 +240,10 @@ body.menu_open {overflow: hidden;}
     position: absolute;
     top: 16px;
     right: 21px;
+    transition: var(--tr-fast);
 }
+
+.modal_close:hover {color: var(--dark);}
 
 /* Show modal */
 .show_modal {

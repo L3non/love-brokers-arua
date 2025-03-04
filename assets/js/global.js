@@ -359,3 +359,18 @@ document.addEventListener("click", (event) => {
         areaUI.button.querySelector("i").style.transform = "rotate(0deg)";
     }
 });
+
+document.querySelectorAll(".switcher button").forEach((button) => {
+    button.addEventListener("click", (event) => {
+        event.stopPropagation();
+
+        // Fecha todos os menus antes de abrir o atual
+        document.querySelectorAll(".switcher .options_list.show").forEach((list) => {
+            list.classList.remove("show");
+        });
+
+        // Abre o menu atual
+        const currentList = button.nextElementSibling;
+        currentList.classList.add("show");
+    });
+});
