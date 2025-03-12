@@ -1,3 +1,11 @@
+/* == == == Contact == == == */
+const contactUp = () => {
+    const contactUp = document.querySelector('#contact');
+    // When the scroll is higher than 350 viewport height, add the show_scroll class to the a tag with the scrollup class
+    this.scrollY >= 480 ? contactUp.classList.add('show_contact') : contactUp.classList.remove('show_contact');
+}
+addEventListener('scroll', contactUp);
+
 /* == == == Header == == == */
 const header = document.querySelector('header'),
       navMenu = document.getElementById('nav_menu'),
@@ -41,6 +49,7 @@ window.addEventListener('scroll', () => {
     
     // Hide the header when scrolling down, show when scrolling up
     header.style.transform = currentScrollY > lastScrollY ? 'translateY(-100%)' : 'translateY(0)';
+    header.style.transition = currentScrollY > lastScrollY ? 'none' : 'var(--tr-medium)';
     
     const isAtTop = currentScrollY === 0;
 
@@ -141,7 +150,11 @@ const applyConversion = () => {
     const rate = currencySwitcher.rates[currencySwitcher.current] || 1; // If BRL, keep the original value
     const symbol = currencySwitcher.currencyData[currencySwitcher.current].symbol;
 
-    const convertedPrice = (basePrice * rate).toFixed(2);
+    const convertedPrice = (basePrice * rate).toLocaleString("pt-BR", {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+    });
+    
     switcherUI.priceElement.textContent = `${symbol} ${convertedPrice}`;
 };
 
@@ -364,13 +377,82 @@ document.querySelectorAll(".switcher button").forEach((button) => {
     button.addEventListener("click", (event) => {
         event.stopPropagation();
 
-        // Fecha todos os menus antes de abrir o atual
+        // Closes all menus before opening the current one
         document.querySelectorAll(".switcher .options_list.show").forEach((list) => {
             list.classList.remove("show");
         });
 
-        // Abre o menu atual
+        // Open the current menu
         const currentList = button.nextElementSibling;
         currentList.classList.add("show");
     });
+});
+
+/* == == == Highlights == == == */
+let swiperHighlight = new Swiper('.highlights_swiper', {
+    loop: true,
+    spaceBetween: 15,
+    grabCursor: true,
+    slidesPerView: 1,
+    centeredSlides: false,
+
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+
+    breakpoints: {
+        400: {slidesPerView: 1.5,},
+        500: {slidesPerView: 1.8,},
+        700: {slidesPerView: 2.5,},
+        800: {slidesPerView: 2.8,},
+        900: {slidesPerView: 3.5,},
+    }
+});
+
+/* == == == Team == == == */
+let swiperTeam = new Swiper('.cards_swiper', {
+    loop: true,
+    spaceBetween: 15,
+    grabCursor: true,
+    slidesPerView: 1.5,
+    centeredSlides: false,
+
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+
+    breakpoints: {
+        500: {slidesPerView: 1.8,},
+        600: {slidesPerView: 2.5,},
+        800: {slidesPerView: 2.8,},
+        900: {slidesPerView: 3.5,},
+        1000: {slidesPerView: 3.8,},
+        1023: {slidesPerView: 1.5,},
+        1200: {slidesPerView: 1.8,},
+        1500: {slidesPerView: 2.5,},
+    }
+});
+
+/* == == == Highlights == == == */
+let swiperold = new Swiper('.sold_swiper', {
+    loop: true,
+    spaceBetween: 15,
+    grabCursor: true,
+    slidesPerView: 1,
+    centeredSlides: false,
+
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+
+    breakpoints: {
+        400: {slidesPerView: 1.5,},
+        500: {slidesPerView: 1.8,},
+        700: {slidesPerView: 2.5,},
+        800: {slidesPerView: 2.8,},
+        900: {slidesPerView: 3.5,},
+    }
 });
