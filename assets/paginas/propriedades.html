@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propriedades de Luxo à venda</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="../css/swiper-bundle.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/propriedades.css">
+</head>
+<body>
+<!-- == == == Contact == == == -->
+    <div id="contact" class="contact">
+        <a href="######">
+            <i class="fa-solid fa-phone phone"></i>
+            <span class="text">Telefone</span>
+        </a>
+        <a href="######">
+            <i class="fa-brands fa-whatsapp whatsapp"></i>
+            <span class="text">Whatsapp</span>
+        </a>
+        <a href="######">Contato</a>
+    </div>
+
+<!-- == == == Header == == == -->
+    <header>
+    <nav class="container">
+        <a href="######" id="nav_logo"><img src="../images/logo_icon.png" alt="Logo Love Brokers"></a>
+
+        <div id="nav_menu" class="nav_menu">
+            <ul id="nav_list">
+                <li class="nav_item">
+                    <a href="../../index.html" class="nav_link" data-i18n="inicio">Início</a>
+                </li>
+
+                <li class="nav_item">
+                    <a href="#" class="nav_link" data-i18n="propriedade">Propriedades</a>
+                </li>
+
+                <li class="nav_item">
+                    <a href="#" class="nav_link" data-i18n="sobre">Sobre</a>
+                </li>
+
+                <li class="nav_item">
+                    <a href="#" class="nav_link" data-i18n="contato">Contato</a>
+                </li>
+            </ul>
+
+            <!-- Close button -->
+            <div id="nav_close" class="nav_close">
+                <i class="fa-solid fa-x"></i>
+            </div>
+        </div>
+
+        <div id="nav_actions">
+            <!-- Language and currency changer button -->
+            <button id="open_modal" class="modal_btn">
+                <i class="fa-solid fa-globe action"></i>
+            </button>
+
+            <div id="modal_container" class="modal_container">
+                <div class="modal_content">
+                    <div class="modal_close close_modal">
+                        <i class="fa-solid fa-x"></i>
+                    </div>
+
+                    <!-- Language switcher -->
+                    <div class="language_switcher switcher">
+                        <h3 class="switcher_title" data-i18n="language_title">Idioma</h3>
+                        <button id="current-language">
+                            <div>
+                                <img id="language-flag" src="assets/images/flags/brazil.png" alt="Bandeira">
+                                <span id="language-label">Português</span>
+                            </div>
+
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+
+                        <ul id="language-options" class="language-options options_list"></ul>
+                    </div>
+
+
+                    <!-- Currency switcher -->
+                    <div class="currency_switcher switcher">
+                        <h3 class="switcher_title" data-i18n="currency_title">Moeda</h3>
+                        <button id="current-currency">
+                            <div>
+                                <span id="currency-label">USD</span>
+                                <span id="currency-symbol">$</span>
+                            </div>
+
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+
+                        <ul id="currency-options" class="currency-options options_list"></ul>
+                    </div>
+
+                    <!-- Area converter switcher -->
+                    <div class="area_switcher switcher">
+                        <h3 class="switcher_title">Unidade</h3>
+                        <button id="current-area">
+                            <div>
+                                <span id="area-label">m²</span>
+                            </div>
+
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+
+                        <ul id="area-options" class="area-options options_list"></ul>
+                    </div>
+
+                    <button id="save_button" class="modal_btn_link close_modal" data-i18n="save_button">Salvar</button>
+                </div>
+            </div>
+
+            <!-- Toggle button -->
+            <div id="nav_toggle" class="nav_toggle">
+                <i class="fa-solid fa-equals action"></i>
+            </div>
+        </div>
+    </nav>
+    </header>
+
+<!-- == == == Sub Header == == == -->
+    <div id="sub_header" class="visible">
+        <a href="######" class="tab_active">Complexo Aruã</a>
+        <a href="######">Locações</a>
+        <a href="######">Terrenos</a>
+        <a href="######">Construa Seu Imóvel</a>
+        <a href="######">Outros Condomínios</a>
+    </div>
+
+<!-- == == == Main == == == -->
+    <main style="height: 3000px;">
+        <!-- Text -->
+        <section id="text">
+            <h1 class="title">Propriedades de Luxo à Venda no Complexo Aruã</h1>
+
+            <p>Bem-vindo ao complexo Aruã, onde uma vida vibrante encontra vistas de tirar o fôlego. Na Love Brokers, somos apaixonados por conectar você com o coração do charme de Aruã. Com a gente, encontrar sua próxima casa não é apenas uma questão de luxo - é descobrir um lugar que pareça perfeito. Mergulhe e deixe a equipe confiável da Love Brokers guiá-lo para seu próprio pedaço do Aruã.</p>
+
+            <a href="######">Saiba Mais</a>
+        </section>
+
+        <!-- Tabs -->
+        <section class="tabs_container">
+            <!-- Tabs links -->
+            <ul aria-labelledby="tabs_title">
+                <li><a id="tab_1" href="#arua">Aruã</a></li>
+                <li><a id="tab_2" href="#ecopark">Aruã Eco park</a></li>
+                <li><a id="tab_3" href="#brizas">Aruã Brizas</a></li>
+                <li><a id="tab_4" href="#lagos">Aruã Lagos</a></li>
+
+                <!-- Search -->
+                <div class="search">
+                    <span class="icon">
+                        <i class="fa-solid fa-magnifying-glass search_btn"></i>
+                        <i class="fa-solid fa-x close_btn"></i>
+                    </span>
+                </div>
+
+                <div class="search_box">
+                    <input id="search" class="input_field" type="text" placeholder="Faça sua pesquisa aqui...">
+                </div>
+            </ul>
+
+            <!-- Tabs containers -->
+            <div class="tabs_panels flow">
+                <!-- Aruã -->
+                <article id="arua" aria-labelledby="tab_1">
+                    <!-- "No results found" message -->
+                    <div class="no_results">
+                        <p>Nenhum resultado encontrado</p>
+                    </div>
+                </article>
+
+                <!-- Eco park -->
+                <article id="ecopark" aria-labelledby="tab_2">
+
+                </article>
+
+                <!-- Brizas -->
+                <article id="brizas" aria-labelledby="tab_3">
+                    
+                </article>
+
+                <!-- Lagos -->
+                <article id="lagos" aria-labelledby="tab_4">
+                    
+                </article>
+            </div>
+        </section>
+
+
+    </main>
+
+
+<!-- == == == Footer == == == -->
+    <footer>
+        <div class="footer_container">
+            <div class="row">
+                <!-- Company -->
+                <div class="footer_col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">Sobre nós</a></li>
+                        <li><a href="#">Nossos serviços</a></li>
+                        <li><a href="#">Politica de privacidade</a></li>
+                        <li><a href="#">Programa de afiliados</a></li>
+                    </ul>
+                </div>
+
+                <!-- Get help -->
+                <div class="footer_col">
+                    <h4>Obtenha ajuda</h4>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Envios</a></li>
+                        <li><a href="#">Retornos</a></li>
+                        <li><a href="#">Status de ordem</a></li>
+                        <li><a href="#">Opções de pagamento</a></li>
+                    </ul>
+                </div>
+
+                <!-- Online shop -->
+                <div class="footer_col">
+                    <h4>Online shop</h4>
+                    <ul>
+                        <li><a href="#">Relógios</a></li>
+                        <li><a href="#">Mochilas</a></li>
+                        <li><a href="#">Tênis</a></li>
+                        <li><a href="#">Vestidos</a></li>
+                    </ul>
+                </div>
+
+                <!-- Follow us -->
+                <div class="footer_col">
+                    <h4>Follow us</h4>
+                    <div class="social_links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+<!-- <p>Preço: <span class="price" data-price="100">R$ 100,00</span></p>
+<p>Area: <span class="area" data-area="50">50 m²</span></p> -->
+
+<!-- == == == Scripts == == == -->
+    <!-- Image swiper -->
+    <script src="../js/swiper-bundle.min.js"></script>
+
+    <!-- Scroll reveal -->
+    <script src="../js/scrollreveal.min.js"></script>
+
+    <!-- Global -->
+    <script src="../js/translations/translation_global.js"></script>
+    <script src="../js/global.js"></script>
+
+    <script src="../js/propriedades.js"></script>
+</body>
+</html>
