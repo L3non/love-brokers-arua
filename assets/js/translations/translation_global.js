@@ -1,7 +1,7 @@
 const translations = {
     pt: {
         name: "Português",
-        flag: "assets/images/flags/brazil.png",
+        flag: "/assets/images/flags/brazil.png",
         translations: {
             // Header
             inicio: "Início",
@@ -12,7 +12,7 @@ const translations = {
     },
     en: {
         name: "English",
-        flag: "assets/images/flags/usa.png",
+        flag: "/assets/images/flags/usa.png",
         translations: {
             // Header
             inicio: "Home",
@@ -23,7 +23,7 @@ const translations = {
     },
     es: {
         name: "Español",
-        flag: "assets/images/flags/esp.png",
+        flag: "/assets/images/flags/esp.png",
         translations: {
             // Header
             inicio: "Inicio",

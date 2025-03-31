@@ -252,7 +252,7 @@ body.menu_open {overflow: hidden;}
     align-items: center;
     justify-content: center;
     transition: opacity var(--tr-fast) ease-in-out, visibility var(--tr-fast) ease-in-out;
-    z-index: 1000;
+    z-index: 9999;
 }
 
 .modal_content {

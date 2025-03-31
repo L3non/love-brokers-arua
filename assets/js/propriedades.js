@@ -127,111 +127,91 @@ function switchTab(newTab) {
 // Search
 let searchBtn = document.querySelector('.search_btn'),
     closeBtn = document.querySelector('.close_btn'),
-    searchBox = document.querySelector('.search_box');
+    searchBox = document.querySelector('.search_box'),
+    searchInput = document.querySelector('#search'),
+    items = document.querySelectorAll('.item'),
+    noResults = document.querySelector('.no_results');
 
-searchBtn.onclick = function () {
-    searchBox.classList.add('active');
-    closeBtn.classList.add('active');
-    searchBtn.classList.add('active');
-}
-
-closeBtn.onclick = function () {
-    searchBox.classList.remove('active');
-    closeBtn.classList.remove('active');
-    searchBtn.classList.remove('active');
-}
-
-// Select the search input
-const searchInput = document.querySelector('#search');
-
-searchInput.addEventListener('input', (event) => {
-    const value = formatString(event.target.value);
-    // Select all accordions
-    const accordions = document.querySelectorAll('.accordion');
-
-    accordions.forEach(accordion => {
-        // Select items within the current accordion
-        const items = accordion.querySelectorAll('.items .item');
-        // Select the "no results" message for the current accordion
-        const noResults = accordion.querySelector('.no_results');
-        let hasResults = false;
-
-        if (value !== '') {
-            items.forEach(item => {
-                const itemDescriptionElement = item.querySelector('.card_description');
-                const itemDescription = itemDescriptionElement ? itemDescriptionElement.textContent : '';
-
-                if (formatString(itemDescription).includes(value)) {
-                    item.style.display = 'flex';
-                    hasResults = true;
-                } else {
-                    item.style.display = 'none';
-                }
-            });
-
-            // Show or hide the "no results" message for this accordion
-            noResults.style.display = hasResults ? 'none' : 'block';
-        } else {
-            // Show all items when input is empty
-            items.forEach(item => item.style.display = 'flex');
-            noResults.style.display = 'none';
-        }
-    });
-});
-
-// Function to format strings: trims spaces, converts to lowercase, and removes accents
+// Function to format strings (remove accents and convert to lowercase)
 function formatString(value) {
     return value
         ? value.trim()
             .toLowerCase()
             .normalize('NFD')
-            .replace(/[\u0300-\u036f]/g, '') // Removes accent marks
-        : ''; // Returns an empty string if undefined or null
+            .replace(/[\u0300-\u036f]/g, '') // Remove accents
+        : '';
 }
 
-// Tabs panels
-const accordions = document.querySelectorAll('.accordion');
+// Event to display the search box
+searchBtn.onclick = function () {
+    searchBox.classList.add('active');
+    closeBtn.classList.add('active');
+    searchBtn.classList.add('active');
+};
 
-accordions.forEach(accordion => {
-    const header = accordion.querySelector('.accordion_header');
-    const body = accordion.querySelector('.accordion_body');
+// Event to close the search box
+closeBtn.onclick = function () {
+    searchBox.classList.remove('active');
+    closeBtn.classList.remove('active');
+    searchBtn.classList.remove('active');
+    searchInput.value = ''; // Clear the search field
+    filterItems(); // Resets the display of items
+};
 
-    if (header && body) {
-        header.addEventListener('click', () => {
-            body.classList.toggle('active');
-        });
-    }
+// Research event
+searchInput.addEventListener('input', () => {
+    filterItems();
 });
 
-// Function to check if an accordion has any items and show/hide the "no results" message
-function checkNoResults() {
-    accordions.forEach(accordion => {
-        const itemsContainer = accordion.querySelector('.items'),
-              items = itemsContainer.querySelectorAll('.item'),
-              noResults = accordion.querySelector('.no_results');
+// Function to filter items
+function filterItems() {
+    const value = formatString(searchInput.value);
+    let hasResults = false;
 
-        // Show "no results" message if there are no .item elements inside .items
-        if (items.length === 0) {
-            noResults.style.display = 'block';
+    items.forEach(item => {
+        const itemDescriptionElement = item.querySelector('.card_description');
+        const itemDescription = itemDescriptionElement ? itemDescriptionElement.textContent : '';
+
+        if (formatString(itemDescription).includes(value)) {
+            item.style.display = 'flex';
+            hasResults = true;
         } else {
-            noResults.style.display = 'none';
+            item.style.display = 'none';
         }
     });
+
+    // Show or hide the "No results found" message
+    if (noResults) {
+        noResults.style.display = hasResults ? 'none' : 'block';
+    }
 }
 
-// Run check initially in case the page starts without any items
+// Function to check for items and display the message "No results found"
+function checkNoResults() {
+    let visibleItems = Array.from(items).some(item => item.style.display !== 'none');
+    
+    if (noResults) {
+        noResults.style.display = visibleItems ? 'none' : 'block';
+    }
+}
+
+// Run the check initially
 checkNoResults();
 
-// MutationObserver to monitor changes in the .items container
-accordions.forEach(accordion => {
-    const itemsContainer = accordion.querySelector('.items');
 
-    if (itemsContainer) {
-        const observer = new MutationObserver(() => {
-            checkNoResults();
-        });
 
-        // Observe changes in the child elements (items added or removed)
-        observer.observe(itemsContainer, { childList: true });
+// Cards
+// Image carousel
+let swiper = new Swiper('.swiper', {
+    loop: 'true',
+
+    pagination: {
+        el: '.swiper-pagination',
+        type: 'fraction',
+    },
+
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
     }
 });

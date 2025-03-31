@@ -328,11 +328,13 @@ const applyAreaConversion = () => {
     areaSwitcher.current = areaSwitcher.pendingArea;
     localStorage.setItem("selectedArea", areaSwitcher.current);
     
-    const baseArea = parseFloat(areaUI.areaElement.dataset.area);
-    const factor = areaSwitcher.areaData[areaSwitcher.current].factor;
-    const convertedArea = (baseArea * factor).toFixed(2);
-    
-    areaUI.areaElement.textContent = `${convertedArea} ${areaSwitcher.current}`;
+    document.querySelectorAll(".area").forEach((areaElement) => {
+        const baseArea = parseFloat(areaElement.dataset.area);
+        const factor = areaSwitcher.areaData[areaSwitcher.current].factor;
+        const convertedArea = (baseArea * factor).toFixed(2);
+        
+        areaElement.textContent = `${convertedArea} ${areaSwitcher.current}`;
+    });
 };
 
 // Action to open/close the dropdown
