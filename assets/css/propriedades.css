@@ -15,7 +15,7 @@ header {background-color: var(--light) !important;}
     display: flex;
     flex-direction: column;
     align-items: center;
-    z-index: var(--z-tooltip);
+    z-index: 99;
     transition: top var(--tr-fast) ease-in-out;
 }
 
@@ -99,6 +99,7 @@ main {
     margin-top: 15px;
     width: 80%;
     height: auto;
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -158,13 +159,12 @@ main {
 
 .search_box {
     background-color: var(--light);
-    margin: 0px 60px;
-    width: 69%;
+    width: 75%;
     height: 60px;
     display: flex;
-    align-items: end;
+    align-items: center;
     position: absolute;
-    bottom: -369px;
+    bottom: 6px;
     transition: var(--tr-medium) ease-in-out;
 }
 
@@ -204,6 +204,8 @@ main {
     justify-content: center;
     flex-wrap: wrap;
 }
+
+article.item {width: 90%;}
 
 .card_product {
     box-shadow: 0 1px 6px var(--sh-lighter);
@@ -466,12 +468,17 @@ main {
 
     /* Tabs */
     .no_results {padding: 15px;}
+    article.item {width: auto;}
 
     .card_product {
         margin: 15px;
-        width: 390px;
+        width: 330px;
         height: 522px;
     }
+}
+
+@media screen and (min-width: 768px) {
+    .card_product {width: 390px;}
 }
 
 @media screen and (min-width: 1023px) {
@@ -487,7 +494,6 @@ main {
         width: 90%;
         height: 60px;
         flex-direction: row;
-        position: relative;
         top: -30px;
     }
 
@@ -521,6 +527,8 @@ main {
 
     .search_box.active {right: 0;}
     .search_box input {height: 40px;}
+
+    .card_product {width: 300px;}
 }
 
 @media screen and (min-width: 1150px) {
@@ -530,5 +538,7 @@ main {
     /* Tabs */
     .tabs_container > ul {width: 45%;}
     .tabs_container li  a{padding: 12px 18px;}    
-    .search_btn {left: 12px;}    
+    .search_btn {left: 12px;}
+    
+    .card_product {width: 330px;}
 }

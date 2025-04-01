@@ -61,9 +61,13 @@ tabPanels.forEach((panel) => {
 
 tabsContainer.addEventListener('click', (e) => {
     const clickedTab = e.target.closest('a');
-    if (!clickedTab) return;
-    e.preventDefault();
 
+    if (!clickedTab) return;
+    
+    // Checks if the link is a tab button or an external link
+    if (!clickedTab.getAttribute('href').startsWith('#')) return;
+
+    e.preventDefault();
     switchTab(clickedTab);
 });
 
