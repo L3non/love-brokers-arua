@@ -347,7 +347,8 @@ main {
     margin: 12px auto 0;
     padding: 9px 21px;
     letter-spacing: 1.5px;
-    transition: .6s;
+    transition: var(--tr-medium);
+    z-index: var(--z-tooltip);
 }
 
 .card_btn:hover {

@@ -198,8 +198,6 @@ function checkNoResults() {
 // Run the check initially
 checkNoResults();
 
-
-
 // Cards
 // Image carousel
 let swiper = new Swiper('.swiper', {
