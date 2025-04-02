@@ -57,9 +57,15 @@
     background-color: var(--light);
     text-transform: uppercase;
     color: var(--dark-l);
-    width: 240px;
     padding: 15px 0;
+    width: 240px;
     letter-spacing: var(--ls-small);
+    transition: var(--tr-fast);
+}
+
+.hero_link:hover {
+    background-color: var(--secondary);
+    color: var(--dark);
 }
 
 /* == == == About == == == */
