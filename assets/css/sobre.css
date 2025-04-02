@@ -1,0 +1,51 @@
+/* == == == Header == == == */
+header {background-color: var(--light) !important;}
+
+.nav_link,
+.action {
+    color: var(--dark) !important;
+}
+
+/* == == == Main == == == */
+main section {
+    padding: 60px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#team {
+    background-color: var(--dark);
+    color: var(--light);
+}
+
+main section img {width: 90%;}
+
+main .text {
+    margin-bottom: 30px;
+    width: 90%;
+}
+
+main .text p {margin-top: 30px;}
+
+/* == == == Media queries == == == */
+/* For large devices */
+@media screen and (min-width: 1023px) {
+    main section {
+        padding: 120px 0;
+        flex-direction: row;
+        justify-content: center;
+        align-items: start;
+    }
+    
+    main section:nth-child(2n) {flex-direction: row-reverse;}
+    main section img {width: 45%;}
+    main .text p {margin-top: 30px;}
+    
+    main .text {
+        margin-bottom: 0;
+        padding: 0 30px;
+        width: 50%;
+    }
+}

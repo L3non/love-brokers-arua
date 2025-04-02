@@ -1,3 +1,12 @@
+/* == == == Header == == == */
+header {background-color: var(--light) !important;}
+
+.nav_link,
+.action {
+    color: var(--dark) !important;
+}
+
+/* == == == Main == == == */
 main {
     overflow: hidden;
     margin: 0 auto;
@@ -6,7 +15,7 @@ main {
 
 /* Image carrossel */
 .wrapper {
-    background-color: var(--grey-l);
+    margin-top: 56px;
     width: 100vw;
     height: 540px;
     position: relative;
@@ -29,14 +38,17 @@ main {
 }
 
 .slide img {
-    object-fit: cover;
+    object-fit: contain;
     width: 100%;
     height: 540px;
 }
 
 .wrapper .swiper-button-prev,
-.wrapper .swiper-button-next,
-.wrapper .swiper-pagination {color: var(--light-l);}
+.wrapper .swiper-button-next {
+    color: var(--primary);
+}
+
+.wrapper .swiper-pagination {color: var(--light);}
 
 .wrapper .swiper-button-prev,
 .wrapper .swiper-button-next {
@@ -46,7 +58,6 @@ main {
 
 .wrapper .swiper-button-prev:hover,
 .wrapper .swiper-button-next:hover {
-    text-shadow: 0 3px 3px var(--sh-default);
     color: var(--secondary);
 }
 
@@ -189,6 +200,8 @@ main {
 /* == == == Media queries == == == */
 /* For large devices */
 @media screen and (min-width: 1023px) {
+    .wrapper {margin-top: 81px;}
+
     #content {flex-direction: row;}
     #left {width: 70%;}
 
